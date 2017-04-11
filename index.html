@@ -58,12 +58,6 @@
 <p>本文档是 <a class="reference external" href="http://redis.io/commands">Redis Command Reference</a> 和 <a class="reference external" href="http://redis.io/documentation">Redis Documentation</a> 的中文翻译版，
 阅读这个文档可以帮助你了解 Redis 命令的具体使用方法，
 并学会如何使用 Redis 的事务、持久化、复制、Sentinel、集群等功能。</p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">由本文档译者制作的《Redis命令速查表》正在销售中！
-该表能够与本文档相辅相成，帮助读者更好地了解和查阅 Redis 命令，有兴趣的读者可以通过访问以下链接来了解更多信息：
-<a class="reference external" href="https://selfstore.io/products/538">https://selfstore.io/products/538</a></p>
-</div>
 <div class="section" id="ctrl-f">
 <h2>命令目录(使用 CTRL + F 快速查找)：<a class="headerlink" href="#ctrl-f" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="docutils">
@@ -109,6 +103,7 @@
 <li class="toctree-l2"><a class="reference internal" href="string/append.html">APPEND</a></li>
 <li class="toctree-l2"><a class="reference internal" href="string/bitcount.html">BITCOUNT</a></li>
 <li class="toctree-l2"><a class="reference internal" href="string/bitop.html">BITOP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="string/bitfield.html">BITFIELD</a></li>
 <li class="toctree-l2"><a class="reference internal" href="string/decr.html">DECR</a></li>
 <li class="toctree-l2"><a class="reference internal" href="string/decrby.html">DECRBY</a></li>
 <li class="toctree-l2"><a class="reference internal" href="string/get.html">GET</a></li>
@@ -150,6 +145,7 @@
 <li class="toctree-l2"><a class="reference internal" href="hash/hsetnx.html">HSETNX</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hash/hvals.html">HVALS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hash/hscan.html">HSCAN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hash/hstrlen.html">HSTRLEN</a></li>
 </ul>
 </li>
 </ul>
@@ -566,12 +562,22 @@
 无论是 Redis 新手还是有一定经验的 Redis 使用者，
 应该都能从此书中获益。</p>
 <p>欢迎访问 <a class="reference external" href="http://redisinaction.com">redisinaction.com</a> 并了解《Redis实战》的更多相关信息。</p>
-</div>
 <hr class="docutils" />
+<img alt="_images/redis-logo-single.png" class="align-left" src="_images/redis-logo-single.png" />
+<p>由本文档译者制作的《Redis命令速查表》正在销售中！
+该表能够与本文档相辅相成，
+帮助读者更好地了解和查阅 Redis 命令，
+有兴趣的读者可以通过访问以下链接来了解更多信息：
+<a class="reference external" href="https://selfstore.io/products/538">https://selfstore.io/products/538</a></p>
+</div>
 <div class="section" id="id4">
 <h2>参加群讨论<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>欢迎各位《Redis命令参考》读者加入 Redis 技术讨论 QQ 群 398976550 ，
-你可以在群里面分享你的 Redis 使用心得，
+<p>欢迎各位《Redis命令参考》读者加入以下 QQ 群：</p>
+<ul class="simple">
+<li>IT 技术讨论 1 群，群号 398976550 ，旧群，目前人数已饱和</li>
+<li>IT 技术讨论 2 群，群号 186200307 ，新群，名额很多，推荐加入</li>
+</ul>
+<p>你可以在群里面分享你的 Redis 使用心得，
 又或者跟其他人讨论你在使用 Redis 过程中遇到的问题。</p>
 </div>
 </div>
@@ -603,8 +609,7 @@
 
 <div id="sponser">
     <h2>赞助商</h2>
-    <a href="http://yunba.io/"><img src="_static/yunba-logo.jpg"/></a>
-    <p><a href="http://yunba.io/">云巴（yunba.io）</a>，专业的App.Web.物联网实时通信后端云服务提供商。</p>
+    <p>我们正在寻找赞助商，有意对这个网站进行赞助的朋友请联系 huangz1990@gmail.com 。</p>
 </div>
 
           </div>

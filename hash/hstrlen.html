@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>PFMERGE &mdash; Redis 命令参考</title>
+    <title>HSTRLEN &mdash; Redis 命令参考</title>
     
     <link rel="stylesheet" href="../_static/pyramid.css" type="text/css" />
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
@@ -24,9 +24,9 @@
     <script type="text/javascript" src="../_static/underscore.js"></script>
     <script type="text/javascript" src="../_static/doctools.js"></script>
     <link rel="top" title="Redis 命令参考" href="../index.html" />
-    <link rel="up" title="HyperLogLog" href="index.html" />
-    <link rel="next" title="GEO（地理位置）" href="../geo/index.html" />
-    <link rel="prev" title="PFCOUNT" href="pfcount.html" /> 
+    <link rel="up" title="Hash（哈希表）" href="index.html" />
+    <link rel="next" title="List（列表）" href="../list/index.html" />
+    <link rel="prev" title="HSCAN" href="hscan.html" /> 
 
 <!--[if lte IE 6]>
 <link rel="stylesheet" href="../_static/ie6.css" type="text/css" media="screen" charset="utf-8" />
@@ -44,13 +44,13 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="../geo/index.html" title="GEO（地理位置）"
+          <a href="../list/index.html" title="List（列表）"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="pfcount.html" title="PFCOUNT"
+          <a href="hscan.html" title="HSCAN"
              accesskey="P">previous</a> |</li>
         <li><a href="../index.html">Redis 命令参考</a> &raquo;</li>
-          <li><a href="index.html" accesskey="U">HyperLogLog</a> &raquo;</li> 
+          <li><a href="index.html" accesskey="U">Hash（哈希表）</a> &raquo;</li> 
       </ul>
     </div>  
 
@@ -59,38 +59,32 @@
         <div class="bodywrapper">
           <div class="body">
             
-  <div class="section" id="pfmerge">
-<span id="id1"></span><h1>PFMERGE<a class="headerlink" href="#pfmerge" title="Permalink to this headline">¶</a></h1>
-<p><strong>PFMERGE destkey sourcekey [sourcekey ...]</strong></p>
-<p>将多个 HyperLogLog 合并（merge）为一个 HyperLogLog ，
-合并后的 HyperLogLog 的基数接近于所有输入 HyperLogLog 的可见集合（observed set）的并集。</p>
-<p>合并得出的 HyperLogLog 会被储存在 <code class="docutils literal"><span class="pre">destkey</span></code> 键里面，
-如果该键并不存在，
-那么命令在执行之前，
-会先为该键创建一个空的 HyperLogLog 。</p>
+  <div class="section" id="hstrlen">
+<span id="id1"></span><h1>HSTRLEN<a class="headerlink" href="#hstrlen" title="Permalink to this headline">¶</a></h1>
+<p><strong>HSTRLEN key field</strong></p>
+<p>返回哈希表 <code class="docutils literal"><span class="pre">key</span></code> 中，
+与给定域 <code class="docutils literal"><span class="pre">field</span></code> 相关联的值的字符串长度（string length）。</p>
+<p>如果给定的键或者域不存在，
+那么命令返回 <code class="docutils literal"><span class="pre">0</span></code> 。</p>
 <dl class="docutils">
 <dt><strong>可用版本：</strong></dt>
-<dd>&gt;= 2.8.9</dd>
+<dd>&gt;= 3.2.0</dd>
 <dt><strong>时间复杂度：</strong></dt>
-<dd>O(N) ，
-其中 N 为被合并的 HyperLogLog 数量，
-不过这个命令的常数复杂度比较高。</dd>
-</dl>
-<dl class="docutils">
+<dd>O(1)</dd>
 <dt><strong>返回值：</strong></dt>
-<dd>字符串回复：返回 <code class="docutils literal"><span class="pre">OK</span></code> 。</dd>
+<dd>一个整数。</dd>
 </dl>
-<div class="highlight-python"><div class="highlight"><pre>redis&gt; PFADD  nosql  &quot;Redis&quot;  &quot;MongoDB&quot;  &quot;Memcached&quot;
-(integer) 1
-
-redis&gt; PFADD  RDBMS  &quot;MySQL&quot; &quot;MSSQL&quot; &quot;PostgreSQL&quot;
-(integer) 1
-
-redis&gt; PFMERGE  databases  nosql  RDBMS
+<div class="highlight-python"><div class="highlight"><pre>redis&gt; HMSET myhash f1 &quot;HelloWorld&quot; f2 &quot;99&quot; f3 &quot;-256&quot;
 OK
 
-redis&gt; PFCOUNT  databases
-(integer) 6
+redis&gt; HSTRLEN myhash f1
+(integer) 10
+
+redis&gt; HSTRLEN myhash f2
+(integer) 2
+
+redis&gt; HSTRLEN myhash f3
+(integer) 4
 </pre></div>
 </div>
 </div>
@@ -137,13 +131,13 @@ redis&gt; PFCOUNT  databases
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="../geo/index.html" title="GEO（地理位置）"
+          <a href="../list/index.html" title="List（列表）"
              >next</a> |</li>
         <li class="right" >
-          <a href="pfcount.html" title="PFCOUNT"
+          <a href="hscan.html" title="HSCAN"
              >previous</a> |</li>
         <li><a href="../index.html">Redis 命令参考</a> &raquo;</li>
-          <li><a href="index.html" >HyperLogLog</a> &raquo;</li> 
+          <li><a href="index.html" >Hash（哈希表）</a> &raquo;</li> 
       </ul>
     </div>
     <div class="footer">
